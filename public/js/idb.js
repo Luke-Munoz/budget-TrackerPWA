@@ -18,7 +18,7 @@ request.onerror = function(event) {
 };
 
 function saveRecord(record) {
-    const transaction = db.transaction(['new_budget', 'readwrite']);
+    const transaction = db.transaction(['new_budget'], 'readwrite');
 
     const budgetObjectStore = transaction.objectStore('new_budget');
 
@@ -26,7 +26,7 @@ function saveRecord(record) {
 }
 
 function uploadBudget() {
-    const transaction = db.transaction(['new_budget', 'readwrite']);
+    const transaction = db.transaction(['new_budget'], 'readwrite');
 
     const budgetObjectStore = transaction.objectStore('new_budget');
 
@@ -47,7 +47,7 @@ function uploadBudget() {
                     if (serverResponse.message) {
                         throw new Error(serverResponse);
                     }
-                    const transaction = db.transaction(['new_budget', 'readwrite']);
+                    const transaction = db.transaction(['new_budget'], 'readwrite');
                     const budgetObjectStore = transaction.objectStore('new_budget')
 
                     budgetObjectStore.clear()
